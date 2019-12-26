@@ -39,6 +39,12 @@ defmodule EasiestAppWeb.Endpoint do
     store: :cookie,
     key: "_easiest_key",
     signing_salt: "nUq7TWo2"
+  
+  plug Corsica,
+    origins: "http://localhost:8080",
+    allow_credentials: true,
+    allow_headers: ["Content-Type"],
+    log: [rejected: :error, invalid: :warn, accepted: :debug]
 
   plug EasiestAppWeb.Router
 end
