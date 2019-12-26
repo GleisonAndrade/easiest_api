@@ -11,9 +11,6 @@ defmodule EasiestAppWeb.UserView do
   end
 
   def render("user.json", %{user: user}) do
-    %{id: user.id,
-      email: user.email,
-      name: user.name,
-      is_active: user.is_active}
+    %{id: user.id, email: user.email, name: user.name, is_active: user.is_active}
   end
 end
