@@ -10,19 +10,18 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 
-# Configure your database
-config :easiest, EasiestApp.Repo,
-  username: "50093409-8615-4efd-9c9f-3333f341ce7f-user",
-  password: "pw-1e620fd7-20c7-482b-872a-788dc3d07a95",
-  database: "50093409-8615-4efd-9c9f-3333f341ce7f",
-  hostname: "postgres-free-tier-1.gigalixir.com",
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10
-
 config :easiest, EasiestAppWeb.Endpoint,
   url: [host: "new-warlike-sealion.gigalixirapp.com", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  server: true,
+  secret_key_base: "${SECRET_KEY_BASE}"
 
+config :teacher, Teacher.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  url: "${DATABASE_URL}",
+  database: "",
+  ssl: true,
+  pool_size: 1
 # Do not print debug messages in production
 config :logger, level: :info
 
