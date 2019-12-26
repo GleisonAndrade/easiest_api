@@ -13,11 +13,12 @@ defmodule EasiestAppWeb.Router do
   scope "/api", EasiestAppWeb do
     pipe_through :api
     post "/users/sign_in", UserController, :sign_in
+    resources "/users", UserController, only: [:create]
   end
 
   scope "/api", EasiestAppWeb do
     pipe_through [:api, :api_auth]
-    resources "/users", UserController, except: [:new, :edit]
+    resources "/users", UserController, except: [:new, :edit, :create]
   end
   
   # Plug function
